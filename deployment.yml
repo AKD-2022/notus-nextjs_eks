@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: notus-nextjs
+  labels:
+    app: notus-nextjs
+spec:
+  replicas:  1
+  selector:
+    matchLabels:
+      app: notus-nextjs
+  template:
+    metadata:
+      labels:
+        app: notus-nextjs
+    spec:
+      containers:
+        - name: notus-nextjs
+          image: "public.ecr.aws/l6k0x5k3/demo/app:notus-nextjs-latest"
+          ports:
+            - containerPort: 3000
+          resources:
+            requests:
+              memory: "140Mi"
+              cpu: "350m"
+            limits:
+              memory: "340Mi"
+              cpu: "500m"
